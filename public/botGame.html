@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tek Oyunculu Dama</title>
+  <link rel="stylesheet" href="dama.css">
+  <style>
+    #endScreen {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+    #endScreen button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #endScreen button:hover {
+      background-color: #388E3C;
+    }
+  </style>
+</head>
+<body>
+  <h2>Bot'a Karşı Dama</h2>
+
+  <div id="board"></div>
+
+  <p id="status">Oyun başlıyor...</p>
+  <p id="timer" style="font-weight: bold; color: red;"></p>
+
+  <!-- 🎮 Oyun Bittiğinde Görünecek Ekran -->
+  <div id="endScreen">
+    <h2 id="winnerMessage"></h2>
+    <button onclick="location.reload()">🔁 Yeniden Oyna</button>
+    <button onclick="window.location.href='index.html'">🏠 Menüye Dön</button>
+  </div>
+
+  <script src="botGame.js"></script>
+</body>
+</html>

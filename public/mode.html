@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Mode - Dama</title>
+  <link rel="stylesheet" href="dama.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="mode-page" style="font-family: 'Orbitron', sans-serif; color: white; text-align: center;">
+
+  <!-- Butonlar -->
+  <div class="mode-buttons" id="main-buttons">
+    <button onclick="startOnlineGame()" class="btn">🎮 Online</button>
+    <a href="botGame.html" class="btn">🤖 Offline</a>
+  </div>
+
+  <!-- Oda link kutusu (başta gizli) -->
+  <div id="room-box" style="display: none; margin-top: 40px;">
+    <div style="background-color: rgba(0, 0, 0, 0.8); padding: 20px; border-radius: 15px; width: 80%; max-width: 600px; margin: auto; border: 2px solid cyan;">
+      <h3 style="color: cyan; font-size: 24px; margin-bottom: 10px;">Oda Linkiniz</h3>
+      <a id="room-link" href="#" target="_blank" style="color: #00ffff; font-size: 20px; word-break: break-all;"></a>
+      <p style="color: white; margin-top: 10px;">Bu linki diğer oyuncu ile paylaşın. Odaya katıldığında oyun başlayacaktır.</p>
+    </div>
+  </div>
+
+  <script>
+    // Token kontrolü
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Bu sayfaya erişmek için giriş yapmalısın.");
+      window.location.href = "login.html";
+    }
+
+    function startOnlineGame() {
+      const roomCode = Math.random().toString(36).substring(2, 8);
+      const link = `${window.location.origin}/game.html?room=${roomCode}`;
+
+      document.getElementById("main-buttons").style.display = "none";
+      document.getElementById("room-box").style.display = "block";
+
+      const linkElement = document.getElementById("room-link");
+      linkElement.href = link;
+      linkElement.textContent = link;
+    }
+  </script>
+
+</body>
+</html>
